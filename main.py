@@ -5,9 +5,9 @@ import numpy as np
 
 detector = FaceDetector()
 
-cap = cv2.VideoCapture(0)
+cap1 = cv2.VideoCapture(0)
 while True:
-    success, image = cap.read()
+    success, image = cap1.read()
     image, bboxes = detector.findFaces(image)
     if bboxes:
         center = bboxes[0]['center']
