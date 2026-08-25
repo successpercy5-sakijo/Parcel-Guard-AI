@@ -1,4 +1,0 @@
-Planning 
-
--Gather data set
-- Clean data 
