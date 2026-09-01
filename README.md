@@ -37,6 +37,7 @@ The project will use an imaged based dataset with examples of damaged and intact
 - Python
 - Computer vision
 - Machine learning / Deep learning
+- Convolutional Neural Network
 - Github
 
 
