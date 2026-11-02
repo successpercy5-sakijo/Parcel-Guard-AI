@@ -1,43 +1,26 @@
-# AI Based Parcel Damage Detection System
+BOX DAMAGE DETECTOR  (Takealot packaging damage - AI assignment)
 
-## Project Overview
+WHAT IS IN THIS FOLDER
+- AI_Damage_Detector.ipynb              Training notebook (baseline CNN, then final MobileNetV2 transfer-learning model)
+- box_damage_classifier_mobilenet.keras Final trained model used by the app (MobileNetV2, 160x160, sigmoid output)
+- main.py                               Streamlit app (upload a photo or use the camera)
+- requirements.txt                      Python packages needed
+- optional_baseline_model/              The first small CNN (64x64), kept for comparison
+- Report                                Add your exported report (Word or PDF) to this folder before sending.
+- training_data/                        Add your image dataset here if the assignment requires it.
 
-This project proposes an AI-based computer vision system for Takealot to detect and document visible damages to parcel packaging 
+HOW TO RUN THE APP
+1. Install Python 3.10 or newer.
+2. Open a terminal in this folder and run:   pip install -r requirements.txt
+3. Start the app:                           streamlit run main.py
+   (main.py must stay in the same folder as box_damage_classifier_mobilenet.keras)
 
-## Business Problem
+MODEL SUMMARY
+- Task: binary image classification (damaged = 0, intact = 1)
+- Final model: frozen MobileNetV2 (ImageNet weights) + GlobalAveragePooling + Dense(128, ReLU) + Dropout(0.5) + Dense(1, sigmoid)
+- Training: Adam, binary cross-entropy, augmentation (shear, zoom, flip), early stopping
+- Data: 349 training, 100 validation, 27 test images
+- Results: about 91% best validation accuracy, 100% test accuracy (small test set); baseline CNN scored 51.85% on the test set
 
-E-commerce businesses process a large number of returns, refunds and replacement requests. When a customer reports that a product arrived damaged it can be difficult to detemine when the damage occured This can create challanges when investigating damage claims and may result in unnecessary refunds, replacements and additional operation costs
-
-## Proposed Solution
-
-We propose an AI powered parcel damage detection system that uses computer vision to analyse images of parcel packaging. The system will classify the parcel as either damaged or intact and access it's condition before parcel is sent out for delivery 
-
-The system will :
-- Capture an image of the parcel
-- Detect visible external packaging damages
-- Classify the parcel as damaged or intact
-- Record the parcel condition
-- Support the investigation of damage-related returns and refunds
-
-## Proposed Process
-
-The parcel is packaged at the warehouse 
-The packaged parcel is placed on a convveyor belt inside the takealot warehouse
-As the parcel passes through the scanning area, a camaera captures an image of the parcle
-The AI system analyses the image and classifies the parcel as damaged or intact
-If the parcel is detected as damaged, it is removed from the normal conveyor flow and sent for staf inspection and repackaging if necessary
-If the parcel is detected as intact, it continues through the normal disoatch process
-
-## Dataset
-
-The project will use an imaged based dataset with examples of damaged and intact packaging. The dataset will be used to train and evaluate the computer vision model's ability to identify visible damages to parcel packaging 
-
-## Technologies
-
-- Python
-- Computer vision
-- Machine learning / Deep learning
-- Convolutional Neural Network
-- Github
-
-
+HOW TO RUN THE NOTEBOOK
+Place the training_data folder (trainning / validating / testing, each with damaged and intact subfolders) next to the notebook, then run the cells in order.
