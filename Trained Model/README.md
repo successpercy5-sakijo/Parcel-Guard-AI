@@ -1,4 +1,4 @@
-BOX DAMAGE DETECTOR  (Takealot packaging damage - AI assignment)
+BOX DAMAGE DETECTOR
 
 WHAT IS IN THIS FOLDER
 - AI_Damage_Detector.ipynb              Training notebook (baseline CNN, then final MobileNetV2 transfer-learning model)
